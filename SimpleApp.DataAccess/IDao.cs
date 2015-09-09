@@ -23,10 +23,24 @@ namespace SimpleApp.DataAccess
         void Add(T entity);
 
         /// <summary>
-        /// Returns an object of type T with the identifier Id or returns 
+        /// Returns an item of type T with the identifier Id  
         /// </summary>
-        /// <param name="Id"></param>
+        /// <param name="Id">identifier</param>
+        /// <returns></returns>
+        T FindElementById(int Id);
+
+        /// <summary>
+        /// Checks if there is an item corresponding to the identifier Id 
+        /// </summary>
+        /// <param name="Id">identifier</param>
         /// <returns></returns>
         bool ExistsElementWithId(int Id);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Id">identifier</param>
+        /// <param name="changeTo">the state we will change to</param>
+        void ChangeCompl(int Id, bool changeTo);
     }
 }

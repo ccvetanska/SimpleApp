@@ -62,7 +62,7 @@ namespace SimpleApp.DataAccess
             return false;
         }
 
-        public ToDoItem ChangeCompleted(int Id, )
+        public ToDoItem FindElementById(int Id)
         {
             List<TODO> todoes = Database.TODOes.ToList();
             foreach (TODO todo in todoes)
@@ -74,10 +74,20 @@ namespace SimpleApp.DataAccess
                         Text = todo.TEXT,
                         Completed = todo.COMPLETED
                     };
-            }            
-            return new ToDoItem();
+            }
+            return null;            
         }
 
+        public void ChangeCompl(int Id, bool changeTo)
+        {
+            List<TODO> todoes = Database.TODOes.ToList();
+            foreach (TODO todo in todoes)
+            {
+                if (todo.ID == Id)
+                    todo.COMPLETED = changeTo;
+            }
+            Database.SaveChanges();
+        }
         
     }
 }

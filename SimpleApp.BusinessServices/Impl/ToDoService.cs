@@ -48,13 +48,11 @@ namespace SimpleApp.BusinessServices.Impl
         {
             //save to db
             IDao<ToDoItem> dao = DaoFactory.Instance.GetDao<ToDoItem>();
-            dao.GetAll();
-            // find the item with the needed id
-            if (isCompleted)
-                item.Completed = false;
-            else
-                item.Completed = true;
-            
+            ToDoItem item = dao.FindElementById(id);
+            if(item!=null)
+            {
+                dao.ChangeCompl(id, isCompleted);
+            }
 
         }
     }

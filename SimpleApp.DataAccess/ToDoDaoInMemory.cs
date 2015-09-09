@@ -23,5 +23,37 @@ namespace SimpleApp.DataAccess
         {
             inMemoryStore.Add(entity);
         }
+
+        public void ChangeCompl(int id, bool compl)
+        {
+            foreach (ToDoItem td in inMemoryStore)
+                if(td.Id==id)
+                {
+                    td.Completed = compl;
+                }
+        }
+        public bool ExistsElementWithId(int id)
+        {
+            foreach (ToDoItem td in inMemoryStore)
+            {
+                if (td.Id==id)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public ToDoItem FindElementById(int id)
+        {
+            foreach (ToDoItem td in inMemoryStore)
+            {
+                if (td.Id==id)
+                {
+                    return td;
+                }
+            }
+            return null;
+        }
     }
 }
