@@ -51,6 +51,23 @@ namespace SimpleApp.DataAccess
             Database.SaveChanges();
         }
 
+        public void Delete(int Id)
+        {
+            if (!ExistsElementWithId(Id))
+            {
+                return;
+            }
+            List<TODO> todoes = Database.TODOes.ToList();
+            foreach (TODO todo in todoes)
+            {
+                if (todo.ID == Id)
+                {
+                    Database.TODOes.Remove(todo);
+                }
+            }
+            Database.SaveChanges();
+        }
+
         public bool ExistsElementWithId(int Id)
         {
             List<TODO> todoes = Database.TODOes.ToList();
@@ -87,7 +104,7 @@ namespace SimpleApp.DataAccess
                     todo.COMPLETED = changeTo;
             }
             Database.SaveChanges();
-        }
-        
+        }        
     }
 }
+

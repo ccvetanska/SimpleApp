@@ -10,8 +10,10 @@ namespace SimpleApp.ViewContracts
     {
         event EventHandler CompletedChanged;
 
-        Repeater ToDosRepeater { get; }
+        event RepeaterCommandEventHandler Deleted;
 
+        Repeater ToDosRepeater { get; }
+        
         string NewItemText { get; }
 
         Button AddButton { get; }

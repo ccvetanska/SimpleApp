@@ -10,6 +10,7 @@ namespace SimpleApp
     {
         protected ToDosController Controller { get; set; }
         public event EventHandler CompletedChanged;
+        public event RepeaterCommandEventHandler Deleted;
 
         public ToDos()
         {
@@ -40,6 +41,7 @@ namespace SimpleApp
             }
         }
 
+        
         protected void CheckBoxCompeleted_CheckedChanged(object sender, EventArgs e)
         {
             if (CompletedChanged != null)
@@ -47,14 +49,25 @@ namespace SimpleApp
                 CompletedChanged(sender, e);
             }
         }
+
+        protected void rptToDos_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            switch(e.CommandName)
+            {
+                case "del":
+                    //==== Getting id of the selelected record(We have passed on link button's command argument property).
+                 //int id = Convert.ToInt32(e.CommandArgument);
+                    //==== Call delete method and pass id as argument.
+                    if(Deleted!=null)
+                    Deleted(source, e);
+                    
+                    break;
+            }
+        }
     }
 }
     
-    
-    //    protected void btnDelete_Command(object sender, CommandEventArgs e)
-    //    {
 
-    //    }
 
 
     //    protected void rptToDos_ItemCommand(object source, RepeaterCommandEventArgs e)

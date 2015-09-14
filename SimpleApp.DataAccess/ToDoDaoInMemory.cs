@@ -24,6 +24,14 @@ namespace SimpleApp.DataAccess
             inMemoryStore.Add(entity);
         }
 
+        public void Delete(int id)
+        {
+            foreach (ToDoItem td in inMemoryStore)
+                if (td.Id == id)
+                {
+                    inMemoryStore.Remove(td);
+                }
+        }
         public void ChangeCompl(int id, bool compl)
         {
             foreach (ToDoItem td in inMemoryStore)

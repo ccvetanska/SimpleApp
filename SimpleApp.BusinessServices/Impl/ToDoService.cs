@@ -35,15 +35,30 @@ namespace SimpleApp.BusinessServices.Impl
             dao.Add(item);
         }
 
+        /// <summary>
+        /// Deletes ToDo item
+        /// </summary>
+        /// <param name="id">The id of the item</param>
+        public void DeleteToDo(int id)
+        {
+            IDao<ToDoItem> dao = DaoFactory.Instance.GetDao<ToDoItem>();
+            dao.Delete(id);
+        }
+
         public void CompleteToDo(bool todoCompleted)
         {
             IDao<ToDoItem> dao = DaoFactory.Instance.GetDao<ToDoItem>();
             ToDoItem item = new ToDoItem();
             item.Completed = true;
-            dao.Add(item);            
+            dao.Add(item);
         }
 
 
+        /// <summary>
+        /// Changes the completed status of ToDo item
+        /// </summary>
+        /// <param name="id">id of the item</param>
+        /// <param name="isCompleted"></param>
         public void ChangeCompleted(int id, bool isCompleted)
         {
             //save to db
@@ -53,7 +68,8 @@ namespace SimpleApp.BusinessServices.Impl
             {
                 dao.ChangeCompl(id, isCompleted);
             }
-
         }
+
+        
     }
 }

@@ -23,6 +23,12 @@ namespace SimpleApp.DataAccess
         void Add(T entity);
 
         /// <summary>
+        /// Deletes an object by its Id
+        /// </summary>
+        /// <param name="Id"></param>
+        void Delete(int Id);
+
+        /// <summary>
         /// Returns an item of type T with the identifier Id  
         /// </summary>
         /// <param name="Id">identifier</param>
@@ -37,7 +43,7 @@ namespace SimpleApp.DataAccess
         bool ExistsElementWithId(int Id);
 
         /// <summary>
-        /// 
+        /// Change the completed status of an object
         /// </summary>
         /// <param name="Id">identifier</param>
         /// <param name="changeTo">the state we will change to</param>
