@@ -18,6 +18,7 @@ namespace SimpleApp.DataAccess
         {
             Database = new Entities();
         }
+        
 
         public IEnumerable<ToDoItem> GetAll()
         {
@@ -53,7 +54,7 @@ namespace SimpleApp.DataAccess
 
         public void Delete(int Id)
         {
-            if (!ExistsElementWithId(Id))
+            if (!ExistsItemWithId(Id))
             {
                 return;
             }
@@ -68,7 +69,7 @@ namespace SimpleApp.DataAccess
             Database.SaveChanges();
         }
 
-        public bool ExistsElementWithId(int Id)
+        public bool ExistsItemWithId(int Id)
         {
             List<TODO> todoes = Database.TODOes.ToList();
             foreach(TODO todo in todoes)
@@ -79,7 +80,7 @@ namespace SimpleApp.DataAccess
             return false;
         }
 
-        public ToDoItem FindElementById(int Id)
+        public ToDoItem FindItem(int Id)
         {
             List<TODO> todoes = Database.TODOes.ToList();
             foreach (TODO todo in todoes)
@@ -104,7 +105,8 @@ namespace SimpleApp.DataAccess
                     todo.COMPLETED = changeTo;
             }
             Database.SaveChanges();
-        }        
+        }   
+     
     }
 }
 

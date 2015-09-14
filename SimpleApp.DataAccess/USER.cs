@@ -14,7 +14,7 @@ namespace SimpleApp.DataAccess
     
     public partial class USER
     {
-        public decimal ID { get; set; }
+        public int ID { get; set; }
         public string USERNAME { get; set; }
         public string PASSWORD { get; set; }
     }

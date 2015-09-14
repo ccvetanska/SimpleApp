@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
+using SimpleApp.BusinessServices;
+using SimpleApp.BusinessServices.Impl;
+using SimpleApp.BusinessServices.Contracts;
+
 
 namespace SimpleApp.Membership
 {
@@ -27,7 +31,8 @@ namespace SimpleApp.Membership
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out MembershipCreateStatus status)
         {
             status = MembershipCreateStatus.Success;
-            return null;
+            IUserService smp = ServiceFactory.Instance.GetService<IUserService>();
+            return smp.CreateUser(username, password);
         }
 
         public override bool DeleteUser(string username, bool deleteAllRelatedData)
@@ -169,7 +174,8 @@ namespace SimpleApp.Membership
 
         public override bool ValidateUser(string username, string password)
         {
-            return true;
+            IUserService smp = ServiceFactory.Instance.GetService<IUserService>();
+            return smp.ValidateUser(username, password);
         }
     }
 }

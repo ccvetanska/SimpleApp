@@ -62,14 +62,12 @@ namespace SimpleApp.BusinessServices.Impl
         public void ChangeCompleted(int id, bool isCompleted)
         {
             //save to db
-            IDao<ToDoItem> dao = DaoFactory.Instance.GetDao<ToDoItem>();
-            ToDoItem item = dao.FindElementById(id);
-            if(item!=null)
+            ToDoDaoDatabase dao = new ToDoDaoDatabase();
+            ToDoItem item = dao.FindItem(id);
+            if (item != null)
             {
                 dao.ChangeCompl(id, isCompleted);
             }
         }
-
-        
     }
 }

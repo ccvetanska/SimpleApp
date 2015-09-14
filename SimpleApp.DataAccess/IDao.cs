@@ -33,20 +33,28 @@ namespace SimpleApp.DataAccess
         /// </summary>
         /// <param name="Id">identifier</param>
         /// <returns></returns>
-        T FindElementById(int Id);
+        T FindItem(int Id);
+
+        /// <summary>
+        /// Returns an item of type T with 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        //T FindItem(string username, string password);
 
         /// <summary>
         /// Checks if there is an item corresponding to the identifier Id 
         /// </summary>
         /// <param name="Id">identifier</param>
         /// <returns></returns>
-        bool ExistsElementWithId(int Id);
+        bool ExistsItemWithId(int Id);
 
         /// <summary>
         /// Change the completed status of an object
         /// </summary>
         /// <param name="Id">identifier</param>
         /// <param name="changeTo">the state we will change to</param>
-        void ChangeCompl(int Id, bool changeTo);
+        //void ChangeCompl(int Id, bool changeTo);
     }
 }

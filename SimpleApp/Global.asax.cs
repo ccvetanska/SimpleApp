@@ -23,6 +23,7 @@ namespace SimpleApp
 
             // Register service implementations
             ServiceFactory.Instance.RegisterService<IToDoService>(new ToDoService());
+            ServiceFactory.Instance.RegisterService<IUserService>(new UserService());
         }
 
         void Application_End(object sender, EventArgs e)

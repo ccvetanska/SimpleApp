@@ -59,8 +59,7 @@ namespace SimpleApp
                  //int id = Convert.ToInt32(e.CommandArgument);
                     //==== Call delete method and pass id as argument.
                     if(Deleted!=null)
-                    Deleted(source, e);
-                    
+                    Deleted(source, e);                    
                     break;
             }
         }

@@ -7,26 +7,23 @@ using System.Threading.Tasks;
 
 namespace SimpleApp.DataAccess
 {
-    /// <summary>
-    /// Implements data access for ToDoItem objects with In Memory storage
-    /// </summary>
-    public class ToDoDaoInMemory : IDao<ToDoItem>
+    public class UserDaoInMemory : IDao<UserItem>
     {
-        private static List<ToDoItem> inMemoryStore = new List<ToDoItem>();
+        private static List<UserItem> inMemoryStore = new List<UserItem>();
 
-        public IEnumerable<ToDoItem> GetAll()
+        public IEnumerable<UserItem> GetAll()
         {
             return inMemoryStore;
         }
 
-        public void Add(ToDoItem entity)
+        public void Add(UserItem entity)
         {
             inMemoryStore.Add(entity);
         }
 
         public void Delete(int id)
         {
-            foreach (ToDoItem td in inMemoryStore)
+            foreach (UserItem td in inMemoryStore)
                 if (td.Id == id)
                 {
                     inMemoryStore.Remove(td);
@@ -34,15 +31,11 @@ namespace SimpleApp.DataAccess
         }
         public void ChangeCompl(int id, bool compl)
         {
-            foreach (ToDoItem td in inMemoryStore)
-                if (td.Id == id)
-                {
-                    td.Completed = compl;
-                }
+
         }
         public bool ExistsItemWithId(int id)
         {
-            foreach (ToDoItem td in inMemoryStore)
+            foreach (UserItem td in inMemoryStore)
             {
                 if (td.Id == id)
                 {
@@ -52,9 +45,9 @@ namespace SimpleApp.DataAccess
             return false;
         }
 
-        public ToDoItem FindItem(int id)
+        public UserItem FindItem(int id)
         {
-            foreach (ToDoItem td in inMemoryStore)
+            foreach (UserItem td in inMemoryStore)
             {
                 if (td.Id == id)
                 {
