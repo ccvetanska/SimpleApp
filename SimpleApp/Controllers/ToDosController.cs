@@ -61,8 +61,7 @@ namespace SimpleApp.Controllers
             _view.Deleted += deletebtn_Click;
             _view.ToDosRepeater.ItemDataBound += repeater_ItemDataBound;
             _view.CompletedChanged += cmplcheckBox_CheckedChanged;
-
-            if (!_view.IsPostBack)
+            if (!_view.IsPostBack) 
             {
                 RebindItems();
             }
@@ -77,8 +76,8 @@ namespace SimpleApp.Controllers
         {
             IToDoService todoService = ServiceFactory.Instance.GetService<IToDoService>();
             //check for logged in user
- //           MembershipUser mu = Membership.SimpleMembershipProvider.
- //           todoService.AddToDo(_view.NewItemText, );
+            MembershipUser mu = System.Web.Security.Membership.GetUser();
+            todoService.AddToDo(_view.NewItemText, mu.UserName);
             RebindItems();
         }
 
@@ -96,8 +95,8 @@ namespace SimpleApp.Controllers
             {
                 cmplcheckBox.CheckedChanged += cmplcheckBox_CheckedChanged;
             }
-                       
 
+       
         }
 
         void deletebtn_Click(object sender, RepeaterCommandEventArgs e)

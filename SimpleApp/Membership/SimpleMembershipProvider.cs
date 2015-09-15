@@ -82,7 +82,8 @@ namespace SimpleApp.Membership
 
         public override MembershipUser GetUser(string username, bool userIsOnline)
         {
-            return null;
+
+            return new MembershipUser(this.Name, username, new object(), "abv", "??", "blabla", true, true, new DateTime(), new DateTime(), new DateTime(), new DateTime(), new DateTime());
         }
 
         public override MembershipUser GetUser(object providerUserKey, bool userIsOnline)
