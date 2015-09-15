@@ -32,7 +32,9 @@ namespace SimpleApp.Membership
         {
             status = MembershipCreateStatus.Success;
             IUserService smp = ServiceFactory.Instance.GetService<IUserService>();
-            return smp.CreateUser(username, password);
+            smp.CreateUser(username, password);
+            //return this.CreateUser(username, password, email, passwordQuestion, passwordAnswer, isApproved, providerUserKey, out status);
+            return null;
         }
 
         public override bool DeleteUser(string username, bool deleteAllRelatedData)

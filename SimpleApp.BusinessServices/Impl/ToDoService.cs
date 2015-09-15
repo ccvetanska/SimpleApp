@@ -17,9 +17,11 @@ namespace SimpleApp.BusinessServices.Impl
         /// <returns>A collection of ToDoItems</returns>
         public IEnumerable<ToDoItem> GetToDosForUser(string user)
         {
-            IDao<ToDoItem> dao = DaoFactory.Instance.GetDao<ToDoItem>();
-            IEnumerable<Model.ToDoItem> result = dao.GetAll();
-
+            ToDoDaoDatabase daoToDo = new ToDoDaoDatabase();
+            UserDaoDatabase daoUser = new UserDaoDatabase();
+            //user -> id of the user   (userId)    
+            int userId = daoUser.FindIdByUsername(user);
+            IEnumerable<Model.ToDoItem> result = daoToDo.GetToDosByUserId(userId);
             return result;
         }
 
@@ -27,12 +29,15 @@ namespace SimpleApp.BusinessServices.Impl
         /// Adds new ToDo
         /// </summary>
         /// <param name="todoText">The text of the ToDo item</param>
-        public void AddToDo(string todoText)
+        public void AddToDo(string todoText, string user)
         {
-            IDao<ToDoItem> dao = DaoFactory.Instance.GetDao<ToDoItem>();
+            ToDoDaoDatabase daoToDo = new ToDoDaoDatabase();
+            UserDaoDatabase daoUser = new UserDaoDatabase();
             ToDoItem item = new ToDoItem();
+            int userId = daoUser.FindIdByUsername(user);
             item.Text = todoText;
-            dao.Add(item);
+            item.UserId = userId;
+            daoToDo.Add(item);
         }
 
         /// <summary>

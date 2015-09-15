@@ -10,5 +10,7 @@
         public string Text { get; set; }
 
         public bool Completed { get; set; }
+
+        public int UserId { get; set; }
     }
 }

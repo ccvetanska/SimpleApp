@@ -16,7 +16,7 @@ namespace SimpleApp.BusinessServices.Contracts
         /// Adds new ToDo
         /// </summary>
         /// <param name="todoText">The text of the ToDo item</param>
-        void AddToDo(string todoText);
+        void AddToDo(string todoText, string user);
 
         /// <summary>
         /// Deletes an existing ToDo

@@ -9,6 +9,7 @@ using System.Web.UI;
 using SimpleApp.Controllers;
 using System.Web.UI.WebControls;
 using System.Linq;
+using System.Web.Security;
 
 
 namespace SimpleApp.Controllers
@@ -75,17 +76,11 @@ namespace SimpleApp.Controllers
         void AddButton_Click(object sender, EventArgs e)
         {
             IToDoService todoService = ServiceFactory.Instance.GetService<IToDoService>();
-            todoService.AddToDo(_view.NewItemText);
+            //check for logged in user
+ //           MembershipUser mu = Membership.SimpleMembershipProvider.
+ //           todoService.AddToDo(_view.NewItemText, );
             RebindItems();
         }
-
-        //void DeleteButton_Click(object sender, EventArgs e)
-        //{
-        //    IToDoService todoService = ServiceFactory.Instance.GetService<IToDoService>();
-        //    todoService.DeleteToDo();
-        //    RebindItems();
-        //}
-        
 
         void repeater_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
@@ -96,7 +91,7 @@ namespace SimpleApp.Controllers
             }
 
             CheckBox cmplcheckBox = (CheckBox)repeaterItem.FindControl("CheckBoxCompeleted");
-            //Button btnDelete = (Button)repeaterItem.FindControl("btndelete");
+
             if (cmplcheckBox != null)
             {
                 cmplcheckBox.CheckedChanged += cmplcheckBox_CheckedChanged;

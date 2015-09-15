@@ -51,6 +51,8 @@ namespace SimpleApp.DataAccess
             Database.SaveChanges();
         }
 
+
+
         public void Delete(int Id)
         {
             if (!ExistsItemWithId(Id))
@@ -95,6 +97,19 @@ namespace SimpleApp.DataAccess
                     };
             }
             return null;
+        }
+
+        public int FindIdByUsername(string username)
+        {
+            List<USER> users = Database.USERS.ToList();
+            foreach (USER user in users)
+            {
+                if (user.USERNAME == username)
+                {
+                    return user.ID;
+                }
+            }
+            throw new ArgumentException("User not found!");
         }
 
         public void ChangeCompl(int Id, bool changeTo)

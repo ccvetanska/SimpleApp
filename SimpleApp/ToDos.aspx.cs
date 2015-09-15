@@ -55,22 +55,12 @@ namespace SimpleApp
             switch(e.CommandName)
             {
                 case "del":
-                    //==== Getting id of the selelected record(We have passed on link button's command argument property).
-                 //int id = Convert.ToInt32(e.CommandArgument);
-                    //==== Call delete method and pass id as argument.
                     if(Deleted!=null)
                     Deleted(source, e);                    
                     break;
+
             }
         }
     }
 }
     
-
-
-
-    //    protected void rptToDos_ItemCommand(object source, RepeaterCommandEventArgs e)
-    //    {
-    //        //e.CommandName == "delete"
-    //        int id = Convert.ToInt32(e.CommandArgument);
-    //    }

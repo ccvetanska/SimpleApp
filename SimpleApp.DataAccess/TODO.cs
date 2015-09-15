@@ -17,5 +17,6 @@ namespace SimpleApp.DataAccess
         public int ID { get; set; }
         public string TEXT { get; set; }
         public bool COMPLETED { get; set; }
+        public int USERID { get; set; }
     }
 }

@@ -30,9 +30,32 @@ namespace SimpleApp.DataAccess
                                         { 
                                             Id = todo.ID, 
                                             Text = todo.TEXT,
-                                            Completed = todo.COMPLETED
+                                            Completed = todo.COMPLETED,
+                                            UserId = todo.USERID
                                         };
                 result.Add(todoItem);
+            }
+
+            return result;
+        }
+
+        public IEnumerable<ToDoItem> GetToDosByUserId(int userId)
+        {
+            List<TODO> todoes = Database.TODOes.ToList();
+            List<ToDoItem> result = new List<ToDoItem>();
+            foreach (TODO todo in todoes)
+            {
+                if (todo.USERID == userId)
+                {
+                    ToDoItem todoItem = new ToDoItem()
+                    {
+                        Id = todo.ID,
+                        Text = todo.TEXT,
+                        Completed = todo.COMPLETED,
+                        UserId = todo.USERID
+                    };
+                    result.Add(todoItem);
+                }
             }
 
             return result;
@@ -90,7 +113,8 @@ namespace SimpleApp.DataAccess
                     {
                         Id = todo.ID,
                         Text = todo.TEXT,
-                        Completed = todo.COMPLETED
+                        Completed = todo.COMPLETED,
+                        UserId=todo.USERID
                     };
             }
             return null;            
