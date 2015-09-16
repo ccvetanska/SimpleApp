@@ -57,6 +57,27 @@ namespace SimpleApp.DataAccess
                     result.Add(todoItem);
                 }
             }
+            
+            return result;
+        }
+
+
+        
+    public IEnumerable<ToDoItem> GetToDosByUserId(int userId, bool showCompleted)
+        {
+            List<TODO> todoes = Database.TODOes.Where(todo => todo.USERID == userId && (todo.COMPLETED==showCompleted || showCompleted)).ToList();
+            List<ToDoItem> result = new List<ToDoItem>();
+            foreach (TODO todo in todoes)
+            {
+                ToDoItem todoItem = new ToDoItem()
+                {
+                    Id = todo.ID,
+                    Text = todo.TEXT,
+                    Completed = todo.COMPLETED,
+                    UserId = todo.USERID
+                };
+                result.Add(todoItem);
+            }
 
             return result;
         }
@@ -70,7 +91,7 @@ namespace SimpleApp.DataAccess
 
             TODO newToDo = new TODO();
             newToDo.TEXT = entity.Text;
-
+            newToDo.USERID = entity.UserId;
             Database.TODOes.Add(newToDo);
             Database.SaveChanges();
         }

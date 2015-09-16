@@ -10,6 +10,8 @@ namespace SimpleApp.ViewContracts
     {
         event EventHandler CompletedChanged;
 
+        event EventHandler ShowCompletedChanged;
+
         event RepeaterCommandEventHandler Deleted;
 
         Repeater ToDosRepeater { get; }
@@ -19,6 +21,8 @@ namespace SimpleApp.ViewContracts
         Button AddButton { get; }
 
         bool IsPostBack { get; }
+
+        CheckBox ShowCompleted { get; }
 
  //       CheckBox CompleteBox { get; }
     }

@@ -42,5 +42,8 @@
     <asp:Label Text="Add new item" runat="server" ID="lblAdd" />
     <asp:TextBox runat="server" ID="tbAddNew" Width="314px"></asp:TextBox>
     <asp:Button runat="server" ID="btnAdd" Text="Add" />
+    <br />
 
+    <asp:CheckBox ID="chbxShowCompl" OnCheckedChanged="chbxShowCompl_CheckedChanged" runat="server" AutoPostBack="true"/>
+    <asp:Label Text="Show completed" runat="server" ID="lblShowCompl" />
 </asp:Content>

@@ -11,6 +11,7 @@ namespace SimpleApp
         protected ToDosController Controller { get; set; }
         public event EventHandler CompletedChanged;
         public event RepeaterCommandEventHandler Deleted;
+        public event EventHandler ShowCompletedChanged;
 
         public ToDos()
         {
@@ -41,12 +42,27 @@ namespace SimpleApp
             }
         }
 
+        public CheckBox ShowCompleted
+        {
+            get
+            {
+                return chbxShowCompl;
+            }
+        }
         
         protected void CheckBoxCompeleted_CheckedChanged(object sender, EventArgs e)
         {
             if (CompletedChanged != null)
             {
                 CompletedChanged(sender, e);
+            }
+        }
+
+        protected void chbxShowCompl_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ShowCompletedChanged!= null)
+            {
+                ShowCompletedChanged(sender, e);
             }
         }
 

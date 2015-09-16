@@ -15,16 +15,17 @@ namespace SimpleApp.BusinessServices.Impl
         /// </summary>
         /// <param name="user">The user</param>
         /// <returns>A collection of ToDoItems</returns>
-        public IEnumerable<ToDoItem> GetToDosForUser(string user)
+        public IEnumerable<ToDoItem> GetToDosForUser(string user, bool showCompleted)
         {
             ToDoDaoDatabase daoToDo = new ToDoDaoDatabase();
             UserDaoDatabase daoUser = new UserDaoDatabase();
             //user -> id of the user   (userId)    
             int userId = daoUser.FindIdByUsername(user);
-            IEnumerable<Model.ToDoItem> result = daoToDo.GetToDosByUserId(userId);
+            IEnumerable<Model.ToDoItem> result = daoToDo.GetToDosByUserId(userId,showCompleted);
+
             return result;
         }
-
+                
         /// <summary>
         /// Adds new ToDo
         /// </summary>

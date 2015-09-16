@@ -10,7 +10,7 @@ namespace SimpleApp.BusinessServices.Contracts
         /// </summary>
         /// <param name="user">The user</param>
         /// <returns>A collection of ToDoItems</returns>
-        IEnumerable<ToDoItem> GetToDosForUser(string user);
+        IEnumerable<ToDoItem> GetToDosForUser(string user, bool showCompleted);
 
         /// <summary>
         /// Adds new ToDo
@@ -31,5 +31,7 @@ namespace SimpleApp.BusinessServices.Contracts
         void CompleteToDo(bool todoCompleted);
 
         void ChangeCompleted(int id, bool isCompleted);
+
+
     }
 }

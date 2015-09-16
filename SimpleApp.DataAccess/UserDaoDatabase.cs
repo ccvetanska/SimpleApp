@@ -114,6 +114,7 @@ namespace SimpleApp.DataAccess
 
         public void ChangeCompl(int Id, bool changeTo)
         {
+            throw new NotImplementedException();
         }
     }
 }

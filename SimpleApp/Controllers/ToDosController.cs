@@ -19,6 +19,7 @@ namespace SimpleApp.Controllers
     /// </summary>
     public class ToDosController
     {
+        public bool showCompl;
         /// <summary>
         /// The view controlled by this controller
         /// </summary>
@@ -43,10 +44,10 @@ namespace SimpleApp.Controllers
         /// <summary>
         /// Rebind the todo items of the repeater
         /// </summary>
-        private void RebindItems()
+        private void RebindItems(bool showCompleted)
         {
             Page viewPage = _view as Page;
-            _view.ToDosRepeater.DataSource = GetToDos();
+            _view.ToDosRepeater.DataSource = GetToDos(showCompleted);
             _view.ToDosRepeater.DataBind();
         }
 
@@ -61,9 +62,10 @@ namespace SimpleApp.Controllers
             _view.Deleted += deletebtn_Click;
             _view.ToDosRepeater.ItemDataBound += repeater_ItemDataBound;
             _view.CompletedChanged += cmplcheckBox_CheckedChanged;
+            _view.ShowCompletedChanged += chbxShowCompl_CheckedChanged;
             if (!_view.IsPostBack) 
             {
-                RebindItems();
+                RebindItems(_view.ShowCompleted.Checked);
             }
         }
 
@@ -78,7 +80,7 @@ namespace SimpleApp.Controllers
             //check for logged in user
             MembershipUser mu = System.Web.Security.Membership.GetUser();
             todoService.AddToDo(_view.NewItemText, mu.UserName);
-            RebindItems();
+            RebindItems(_view.ShowCompleted.Checked);
         }
 
         void repeater_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -94,9 +96,11 @@ namespace SimpleApp.Controllers
             if (cmplcheckBox != null)
             {
                 cmplcheckBox.CheckedChanged += cmplcheckBox_CheckedChanged;
-            }
-
-       
+                if(cmplcheckBox.Checked) /*and if the ShowCompleted checkbox unchecked*/
+                {
+                    // hide this item
+                }
+            }       
         }
 
         void deletebtn_Click(object sender, RepeaterCommandEventArgs e)
@@ -112,7 +116,7 @@ namespace SimpleApp.Controllers
                 throw new ArgumentException("Cannot cast string to int!");
             }
             // RebindItems() refreshes the page after deleting.
-            RebindItems();
+            RebindItems(_view.ShowCompleted.Checked);
         }
 
         void cmplcheckBox_CheckedChanged(object sender, EventArgs e)
@@ -144,18 +148,24 @@ namespace SimpleApp.Controllers
             }            
         }
 
-        
+        void chbxShowCompl_CheckedChanged(object sender, EventArgs e)
+        {
+            IToDoService todoService = ServiceFactory.Instance.GetService<IToDoService>();
+            CheckBox cb = sender as CheckBox;
+            RebindItems(cb.Checked);
+
+        }
+
         /// <summary>
         /// Retrieves the todo items
         /// </summary>
         /// <returns>A collection of ToDo items</returns>
-        IEnumerable<ToDoItem> GetToDos()
+        IEnumerable<ToDoItem> GetToDos(bool showCompleted)
         {
             IToDoService todoService = ServiceFactory.Instance.GetService<IToDoService>();
-
             if (todoService != null)
             {
-                return todoService.GetToDosForUser(HttpContext.Current.User.Identity.Name);
+                return todoService.GetToDosForUser(HttpContext.Current.User.Identity.Name, showCompleted);
             }
             return null;
         }
