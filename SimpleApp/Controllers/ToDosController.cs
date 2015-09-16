@@ -145,7 +145,8 @@ namespace SimpleApp.Controllers
                 {
                     throw new ArgumentException("Cannot cast string to int!");
                 }
-            }            
+            }
+            RebindItems(_view.ShowCompleted.Checked);
         }
 
         void chbxShowCompl_CheckedChanged(object sender, EventArgs e)
