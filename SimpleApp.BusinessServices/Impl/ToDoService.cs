@@ -10,26 +10,17 @@ namespace SimpleApp.BusinessServices.Impl
     /// </summary>
     public class ToDoService : IToDoService
     {
-        /// <summary>
-        /// Returns the ToDo items for a give user
-        /// </summary>
-        /// <param name="user">The user</param>
-        /// <returns>A collection of ToDoItems</returns>
+
         public IEnumerable<ToDoItem> GetToDosForUser(string user, bool showCompleted)
         {
             ToDoDaoDatabase daoToDo = new ToDoDaoDatabase();
             UserDaoDatabase daoUser = new UserDaoDatabase();
-            //user -> id of the user   (userId)    
             int userId = daoUser.FindIdByUsername(user);
             IEnumerable<Model.ToDoItem> result = daoToDo.GetToDosByUserId(userId,showCompleted);
 
             return result;
         }
                 
-        /// <summary>
-        /// Adds new ToDo
-        /// </summary>
-        /// <param name="todoText">The text of the ToDo item</param>
         public void AddToDo(string todoText, string user)
         {
             ToDoDaoDatabase daoToDo = new ToDoDaoDatabase();
@@ -41,10 +32,6 @@ namespace SimpleApp.BusinessServices.Impl
             daoToDo.Add(item);
         }
 
-        /// <summary>
-        /// Deletes ToDo item
-        /// </summary>
-        /// <param name="id">The id of the item</param>
         public void DeleteToDo(int id)
         {
             IDao<ToDoItem> dao = DaoFactory.Instance.GetDao<ToDoItem>();
@@ -59,12 +46,6 @@ namespace SimpleApp.BusinessServices.Impl
             dao.Add(item);
         }
 
-
-        /// <summary>
-        /// Changes the completed status of ToDo item
-        /// </summary>
-        /// <param name="id">id of the item</param>
-        /// <param name="isCompleted"></param>
         public void ChangeCompleted(int id, bool isCompleted)
         {
             //save to db

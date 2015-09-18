@@ -21,17 +21,20 @@ namespace SimpleApp.BusinessServices.Contracts
         /// <summary>
         /// Deletes an existing ToDo
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the ToDo item</param>
         void DeleteToDo(int id);
 
         /// <summary>
         /// Marks/unmarks an existing ToDo as completed
         /// </summary>
-        /// <param name="todoCompleted">True if the ToDo item is completed</param>
+        /// <param name="todoCompleted">True if the ToDo is completed</param>
         void CompleteToDo(bool todoCompleted);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id">The id of the ToDo</param>
+        /// <param name="isCompleted"></param>
         void ChangeCompleted(int id, bool isCompleted);
-
-
     }
 }

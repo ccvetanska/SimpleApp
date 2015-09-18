@@ -24,6 +24,5 @@ namespace SimpleApp.ViewContracts
 
         CheckBox ShowCompleted { get; }
 
- //       CheckBox CompleteBox { get; }
     }
 }

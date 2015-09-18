@@ -3,27 +3,24 @@
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <hgroup class="title">
         <h1><%: Title %>.</h1>
-        <h2>Your app description page.</h2>
+        <h2>SimpleApp is an ASP.NET application for managing daily To Do tasks.</h2>
     </hgroup>
 
     <article>
         <p>        
-            Use this area to provide additional information.
+           
         </p>
 
         <p>        
-            Use this area to provide additional information.
+
         </p>
 
-        <p>        
-            Use this area to provide additional information.
-        </p>
+
     </article>
 
     <aside>
-        <h3>Aside Title</h3>
+        <h3></h3>
         <p>        
-            Use this area to provide additional information.
         </p>
         <ul>
             <li><a runat="server" href="~/">Home</a></li>

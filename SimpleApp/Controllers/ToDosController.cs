@@ -96,13 +96,14 @@ namespace SimpleApp.Controllers
             if (cmplcheckBox != null)
             {
                 cmplcheckBox.CheckedChanged += cmplcheckBox_CheckedChanged;
-                if(cmplcheckBox.Checked) /*and if the ShowCompleted checkbox unchecked*/
-                {
-                    // hide this item
-                }
             }       
         }
 
+        /// <summary>
+        /// Handles a click event on DeleteButton of the Repeater
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">Comand arguments of the repeater</param>
         void deletebtn_Click(object sender, RepeaterCommandEventArgs e)
         {
             IToDoService todoService = ServiceFactory.Instance.GetService<IToDoService>();
@@ -119,6 +120,11 @@ namespace SimpleApp.Controllers
             RebindItems(_view.ShowCompleted.Checked);
         }
 
+        /// <summary>
+        /// Handles a CheckedChange event of the Completed checkbox 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void cmplcheckBox_CheckedChanged(object sender, EventArgs e)
         {
             IToDoService todoService = ServiceFactory.Instance.GetService<IToDoService>();
@@ -149,6 +155,11 @@ namespace SimpleApp.Controllers
             RebindItems(_view.ShowCompleted.Checked);
         }
 
+        /// <summary>
+        /// Handles a CheckChange event of the Show Completed checkbox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void chbxShowCompl_CheckedChanged(object sender, EventArgs e)
         {
             IToDoService todoService = ServiceFactory.Instance.GetService<IToDoService>();

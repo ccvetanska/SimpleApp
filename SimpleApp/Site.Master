@@ -39,8 +39,8 @@
     <header>
         <div class="content-wrapper">
             <div class="float-left">
+                <asp:Image ImageUrl="~/Images/logoTitle.png" runat="server" />
                 <p class="site-title">
-                    <a runat="server" href="~/">your logo here</a>
                 </p>
             </div>
             <div class="float-right">
@@ -81,7 +81,7 @@
     <footer>
         <div class="content-wrapper">
             <div class="float-left">
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+                <p>&copy; <%: DateTime.Now.Year %> - SimpleApp Team</p>
             </div>
         </div>
     </footer>

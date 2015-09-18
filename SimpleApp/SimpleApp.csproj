@@ -140,6 +140,7 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Images\logoTitle.png" />
     <Content Include="ToDos.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\Site.css" />
